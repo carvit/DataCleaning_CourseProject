@@ -1,56 +1,279 @@
 ---
-title: "CodeBook for the Project of Data Cleaning Course"
-author: "Robert H."
-date: "11/19/2016"
+title: CodeBook for the Project of Data Cleaning Course
+author: Robert H.
+date: 11/19/2016
 ---
 
-This is the brief description of the process of reading and tidying the data. The final script should perform following tasks:
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names.
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+All variables in the corresponding datased are averaged by ACTIVITY and SUBJECT_ID. The description of the original data can you find at http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones .
 
-# The Process
+# 1. ACTIVITY      
+Factor variable with 6 levels:
 
-## Reading the Data
-* The script checks, if the target directory exists
-* If the directory doesn't exist, it downloads the ZIP file from the corresponding URL and unzips it
+* LAYING
+* SITTING
+* STANDING
+* WALKING
+* WALKING_DOWNSTAIRS
+* WALKING_UPSTAIRS
 
-## Reading the Codebook for Features and Activities
-* There is the list of feature names and activity names in the experient
-* The script reads each feature and activity into the data.frame
-* In later processing, it will be used for assigning the descriptive names to the columns and to merging with the training and testing data.frame respectively
+# 2. SUBJECT_ID         
+Integer variable with values 1:30 designated to people conducting the activities.
 
-## Reading the Training and Testing Dataset
-For each dataset, there are several files, that need to be read:
+# 3. tBodyAcc-mean()-X             
+Numeric variable
 
-* subject IDs
-* activity IDs
-* measured data
+# 4. tBodyAcc-mean()-Y                   
+Numeric variable
 
-In the *read.csv* command, you need to set the separator *sep* to *""*, which is interpreted as the whole whitespace as a single separator. If you don't do this, you end up with broken data.frame i.e there will be more than 561 columns.
+# 5. tBodyAcc-mean()-Z                   
+Numeric variable
 
-In the next step, the column names will be substituted by descriptive variable names (point 4 of the assignemnt)
+# 6. tGravityAcc-mean()-X                
+Numeric variable
 
-## Merging the Training and Testing Dataset
+# 7. tGravityAcc-mean()-Y                
+Numeric variable
 
-* the script binds the rows of the training and the testing dataset
-* it adds new column which represents the activity ID of each observation (row)
-* it adds another column of the subject ID of each observation
-* then it merges this huge dataset with the codebook of the activities dataframe, so that the names of activities are added
+# 8. tGravityAcc-mean()-Z                
+Numeric variable
 
-## Extracting of mean and standard deviation variables
-There are 561 measured variables for each observartion. We need to extract just few of them:
+# 9. tBodyAccJerk-mean()-X               
+Numeric variable
 
-* in the first step the indexes of *ACTIVITY* and *SUBJECT_ID* column are found
-* then the script uses the grep function to pick the indexes of each column with the std or mean in its name
-* subsetting the dataset by the column indexes produces the required dataset
+# 10. tBodyAccJerk-mean()-Y               
+Numeric variable
 
-## Independant tidy data.set
-Creating independant tidy data set is pretty straight forward thanks to dplyr package:
+# 11. tBodyAccJerk-mean()-Z               
+Numeric variable
 
-* take the data.set from the previous step
-* group it by *ACTIVITY* and by *SUBJECT_ID*
-* use *summarise_each* to count the average for each variable in the dataset
+# 12. tBodyGyro-mean()-X                  
+Numeric variable
+
+# 13. tBodyGyro-mean()-Y                  
+Numeric variable
+
+# 14. tBodyGyro-mean()-Z                  
+Numeric variable
+
+# 15. tBodyGyroJerk-mean()-X              
+Numeric variable
+
+# 16. tBodyGyroJerk-mean()-Y              
+Numeric variable
+
+# 17. tBodyGyroJerk-mean()-Z              
+Numeric variable
+
+# 18. tBodyAccMag-mean()                  
+Numeric variable
+
+# 19. tGravityAccMag-mean()               
+Numeric variable
+
+# 20. tBodyAccJerkMag-mean()              
+Numeric variable
+
+# 21. tBodyGyroMag-mean()                 
+Numeric variable
+
+# 22. tBodyGyroJerkMag-mean()             
+Numeric variable
+
+# 23. fBodyAcc-mean()-X                   
+Numeric variable
+
+# 24. fBodyAcc-mean()-Y                   
+Numeric variable
+
+# 25. fBodyAcc-mean()-Z                   
+Numeric variable
+
+# 26. fBodyAcc-meanFreq()-X               
+Numeric variable
+
+# 27. fBodyAcc-meanFreq()-Y               
+Numeric variable
+
+# 28. fBodyAcc-meanFreq()-Z               
+Numeric variable
+
+# 29. fBodyAccJerk-mean()-X               
+Numeric variable
+
+# 30. fBodyAccJerk-mean()-Y               
+Numeric variable
+
+# 31. fBodyAccJerk-mean()-Z               
+Numeric variable
+
+# 32. fBodyAccJerk-meanFreq()-X           
+Numeric variable
+
+# 33. fBodyAccJerk-meanFreq()-Y           
+Numeric variable
+
+# 34. fBodyAccJerk-meanFreq()-Z           
+Numeric variable
+
+# 35. fBodyGyro-mean()-X                  
+Numeric variable
+
+# 36. fBodyGyro-mean()-Y 
+Numeric variable
+
+# 37. fBodyGyro-mean()-Z                  
+Numeric variable
+
+# 38. fBodyGyro-meanFreq()-X              
+Numeric variable
+
+# 39. fBodyGyro-meanFreq()-Y              
+Numeric variable
+
+# 40. fBodyGyro-meanFreq()-Z              
+Numeric variable
+
+# 41. fBodyAccMag-mean()                  
+Numeric variable
+
+# 42. fBodyAccMag-meanFreq()              
+Numeric variable
+
+# 43. fBodyBodyAccJerkMag-mean()          
+Numeric variable
+
+# 44. fBodyBodyAccJerkMag-meanFreq()      
+Numeric variable
+
+# 45. fBodyBodyGyroMag-mean()             
+Numeric variable
+
+# 46. fBodyBodyGyroMag-meanFreq()         
+Numeric variable
+
+# 47. fBodyBodyGyroJerkMag-mean()         
+Numeric variable
+
+# 48. fBodyBodyGyroJerkMag-meanFreq()     
+Numeric variable
+
+# 49. angle(tBodyAccMean,gravity)         
+Numeric variable
+
+# 50. angle(tBodyAccJerkMean),gravityMean)
+Numeric variable
+
+# 51. angle(tBodyGyroMean,gravityMean)    
+Numeric variable
+
+# 52. angle(tBodyGyroJerkMean,gravityMean)
+Numeric variable
+
+# 53. angle(X,gravityMean)                
+Numeric variable
+
+# 54. angle(Y,gravityMean)                
+Numeric variable
+
+# 55. angle(Z,gravityMean)                
+Numeric variable
+
+# 56. tBodyAcc-std()-X                    
+Numeric variable
+
+# 57. tBodyAcc-std()-Y                    
+Numeric variable
+
+# 58. tBodyAcc-std()-Z                    
+Numeric variable
+
+# 59. tGravityAcc-std()-X                 
+Numeric variable
+
+# 60. tGravityAcc-std()-Y                 
+Numeric variable
+
+# 61. tGravityAcc-std()-Z                 
+Numeric variable
+
+# 62. tBodyAccJerk-std()-X                
+Numeric variable
+
+# 63. tBodyAccJerk-std()-Y                
+Numeric variable
+
+# 64. tBodyAccJerk-std()-Z                
+Numeric variable
+
+# 65. tBodyGyro-std()-X                   
+Numeric variable
+
+# 66. tBodyGyro-std()-Y                   
+Numeric variable
+
+# 67. tBodyGyro-std()-Z                   
+Numeric variable
+
+# 68. tBodyGyroJerk-std()-X               
+Numeric variable
+
+# 69. tBodyGyroJerk-std()-Y               
+Numeric variable
+
+# 70. tBodyGyroJerk-std()-Z               
+Numeric variable
+
+# 71. tBodyAccMag-std()                   
+Numeric variable
+
+# 72. tGravityAccMag-std()                
+Numeric variable
+
+# 73. tBodyAccJerkMag-std()               
+Numeric variable
+
+# 74. tBodyGyroMag-std()                  
+Numeric variable
+
+# 75. tBodyGyroJerkMag-std()              
+Numeric variable
+
+# 76. fBodyAcc-std()-X                    
+Numeric variable
+
+# 77. fBodyAcc-std()-Y                    
+Numeric variable
+
+# 78. fBodyAcc-std()-Z                    
+Numeric variable
+
+# 79. fBodyAccJerk-std()-X                
+Numeric variable
+
+# 80. fBodyAccJerk-std()-Y                
+Numeric variable
+
+# 81. fBodyAccJerk-std()-Z                
+Numeric variable
+
+# 82. fBodyGyro-std()-X                   
+Numeric variable
+
+# 83. fBodyGyro-std()-Y                   
+Numeric variable
+
+# 84. fBodyGyro-std()-Z                   
+Numeric variable
+
+# 85. fBodyAccMag-std()                   
+Numeric variable
+
+# 86. fBodyBodyAccJerkMag-std()           
+Numeric variable
+
+# 87. fBodyBodyGyroMag-std()              
+Numeric variable
+
+# 88. fBodyBodyGyroJerkMag-std()          
+Numeric variable
 

@@ -67,8 +67,6 @@ summarized_tidy <- tidy %>% group_by(ACTIVITY, SUBJECT_ID) %>% summarise_each(fu
 
 #######################################################################
 # writing the resulting dataset to output file
-write.table(summarized_tidy, file = "out.txt",  row.names = FALSE)
-
-
+write.table(summarized_tidy, file = "summarized.txt",  row.names = FALSE)
 
 
