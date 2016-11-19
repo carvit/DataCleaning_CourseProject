@@ -12,7 +12,7 @@ In the project directory you can find following files:
 
 *  run_analysis.R - resulting script, which performs required functionality
 *  CodeBook.md - the description of the getting and cleaning process
-*  summarized.txt - required tidy dataset
+*  README.md - this README file
 
 he main goal was to code the script which performs following tasks:
 1. Merges the training and the test sets to create one data set.
